@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Doline Taquet — Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-snap-type: y mandatory; overflow-y: scroll; }
+body {
+  font-family: 'Inter', sans-serif;
+  background: #0a0a0f;
+  color: #e4e4e7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ===== PAGE SYSTEM ===== */
+.page {
+  min-height: 100vh;
+  scroll-snap-align: start;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 80px 40px 40px;
+  position: relative;
+}
+.page-inner {
+  max-width: 1100px;
+  width: 100%;
+}
+
+/* ===== NAV ===== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: rgba(10,10,15,.85);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(255,255,255,.08);
+}
+.nav-inner {
+  max-width: 1200px; margin: 0 auto;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 32px; height: 52px;
+}
+.nav-name { font-weight: 700; font-size: .9rem; color: #fff; }
+.nav-dots { display: flex; gap: 6px; align-items: center; }
+.nav-dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: rgba(255,255,255,.15);
+  transition: all .3s; cursor: pointer;
+  border: none; padding: 0;
+}
+.nav-dot.active { background: #006AFF; width: 24px; border-radius: 4px; }
+.nav-dot:hover { background: rgba(255,255,255,.3); }
+.nav-label {
+  font-size: .7rem; color: #52525b; margin-left: 12px;
+  min-width: 100px;
+}
+
+/* ===== PAGE COUNTER ===== */
+.page-num {
+  position: absolute; bottom: 32px; right: 40px;
+  font-size: .7rem; color: #3f3f46; font-weight: 600;
+  letter-spacing: .1em;
+}
+
+/* ===== SCROLL HINT ===== */
+.scroll-hint {
+  position: absolute; bottom: 32px; left: 50%;
+  transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  animation: pulse 2s infinite;
+}
+.scroll-hint span { font-size: .65rem; color: #3f3f46; text-transform: uppercase; letter-spacing: .1em; }
+.scroll-arrow { font-size: 1rem; color: #3f3f46; }
+@keyframes pulse { 0%,100% { opacity: .4; } 50% { opacity: 1; } }
+
+/* ===== HERO ===== */
+.hero-title {
+  font-size: clamp(2.4rem, 5vw, 3.8rem);
+  font-weight: 800; line-height: 1.08;
+  background: linear-gradient(135deg, #fff 0%, #a1a1aa 100%);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  margin-bottom: 16px;
+}
+.hero-sub { font-size: 1.1rem; color: #a1a1aa; max-width: 520px; margin-bottom: 48px; }
+.stats-row { display: flex; gap: 48px; flex-wrap: wrap; }
+.stat-val { font-size: 2.4rem; font-weight: 800; color: #fff; line-height: 1; }
+.stat-val span { color: #006AFF; }
+.stat-lbl { font-size: .7rem; color: #71717a; text-transform: uppercase; letter-spacing: .08em; margin-top: 4px; }
+
+/* ===== TAGS ===== */
+.tag { display: inline-block; font-size: .6rem; font-weight: 700; text-transform: uppercase; letter-spacing: .07em; padding: 3px 8px; border-radius: 5px; margin-bottom: 10px; }
+.tag-core { background: rgba(96,165,250,.15); color: #60a5fa; }
+.tag-ai { background: rgba(167,139,250,.15); color: #a78bfa; }
+.tag-code { background: rgba(52,211,153,.15); color: #34d399; }
+.tag-auto { background: rgba(244,114,182,.15); color: #f472b6; }
+.tag-coaching { background: rgba(96,165,250,.15); color: #60a5fa; }
+.tag-ops { background: rgba(251,191,36,.15); color: #fbbf24; }
+.tag-lead { background: rgba(248,113,113,.15); color: #f87171; }
+
+/* ===== SECTION LABEL ===== */
+.sec-label { font-size: .7rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #006AFF; margin-bottom: 20px; }
+
+/* ===== OWNERSHIP GRID ===== */
+.own-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin: 24px 0; }
+.own-cell { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 10px; padding: 16px; }
+.own-lbl { font-size: .6rem; color: #71717a; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
+.own-val { font-size: .85rem; color: #fff; font-weight: 600; line-height: 1.4; }
+.own-stats { display: flex; gap: 20px; flex-wrap: wrap; font-size: .8rem; margin-top: 8px; }
+.own-stats strong { color: #fff; }
+
+/* ===== PROJECT HEADER ===== */
+.proj-title { font-size: 1.6rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.proj-desc { font-size: .95rem; color: #a1a1aa; max-width: 520px; margin-bottom: 24px; line-height: 1.6; }
+.proj-nums { display: flex; gap: 32px; margin-bottom: 24px; }
+.pn-val { font-size: 1.6rem; font-weight: 800; color: #fff; }
+.pn-lbl { font-size: .6rem; color: #71717a; text-transform: uppercase; letter-spacing: .06em; }
+
+/* ===== VISUAL FRAME ===== */
+.vframe { border-radius: 16px; overflow: hidden; border: 1px solid rgba(255,255,255,.08); background: #141419; }
+.vbar { display: flex; align-items: center; gap: 8px; padding: 8px 14px; background: rgba(255,255,255,.03); border-bottom: 1px solid rgba(255,255,255,.08); }
+.d { width: 9px; height: 9px; border-radius: 50%; }
+.d:nth-child(1) { background: #f87171; } .d:nth-child(2) { background: #fbbf24; } .d:nth-child(3) { background: #34d399; }
+.vurl { flex: 1; text-align: center; font-size: .65rem; color: #52525b; font-family: monospace; }
+
+/* FLOW */
+.flow { display: flex; align-items: center; justify-content: center; gap: 0; padding: 40px 20px; flex-wrap: wrap; }
+.fs { text-align: center; padding: 20px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); border-radius: 10px; min-width: 130px; }
+.fs-icon { font-size: 1.6rem; margin-bottom: 6px; }
+.fs-label { font-size: .78rem; font-weight: 600; color: #fff; }
+.fs-sub { font-size: .62rem; color: #71717a; margin-top: 3px; }
+.fa { font-size: 1.2rem; color: #3f3f46; padding: 0 6px; }
+
+/* SITEMAP */
+.sitemap { padding: 28px 20px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.sm { background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.06); border-radius: 8px; padding: 12px; text-align: center; }
+.sm-icon { font-size: 1.2rem; margin-bottom: 3px; }
+.sm-name { font-size: .68rem; font-weight: 600; color: #d4d4d8; }
+.sm-type { font-size: .58rem; color: #71717a; }
+
+/* ===== COMPACT GRID ===== */
+.cgrid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
+.cc { background: #141419; border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 24px; }
+.cc-title { font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 6px; }
+.cc-desc { font-size: .78rem; color: #a1a1aa; line-height: 1.5; margin-bottom: 10px; }
+.cc-stats { display: flex; gap: 12px; flex-wrap: wrap; font-size: .72rem; }
+.cc-stats strong { color: #fff; }
+
+/* ===== FOOTER ===== */
+.footer-page { min-height: auto; padding: 40px; }
+.footer-text { font-size: .75rem; color: #3f3f46; text-align: center; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .page { padding: 70px 20px 40px; }
+  .own-grid { grid-template-columns: repeat(2, 1fr); }
+  .sitemap { grid-template-columns: repeat(3, 1fr); }
+  .cgrid { grid-template-columns: 1fr; }
+  .stats-row { gap: 28px; }
+  .flow { flex-direction: column; }
+  .fa { transform: rotate(90deg); }
+  .proj-nums { gap: 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav"><div class="nav-inner">
+  <span class="nav-name">DT</span>
+  <div class="nav-dots">
+    <button class="nav-dot active" onclick="goTo(0)" title="Home"></button>
+    <button class="nav-dot" onclick="goTo(1)" title="Delivery"></button>
+    <button class="nav-dot" onclick="goTo(2)" title="AI Simulator"></button>
+    <button class="nav-dot" onclick="goTo(3)" title="Training Platform"></button>
+    <button class="nav-dot" onclick="goTo(4)" title="Automation"></button>
+    <button class="nav-dot" onclick="goTo(5)" title="Impact"></button>
+  </div>
+  <span class="nav-label" id="navLabel">Home</span>
+</div></nav>
+
+<!-- ======================== -->
+<!-- PAGE 1: HERO -->
+<!-- ======================== -->
+<section class="page" id="p0">
+  <div class="page-inner">
+    <div class="hero-title">Learning systems that actually change performance.</div>
+    <p class="hero-sub">I own training delivery across Europe, build AI-powered tools, and coach with measurable results.</p>
+    <div class="stats-row">
+      <div><div class="stat-val"><span>5</span>+</div><div class="stat-lbl">Programs owned</div></div>
+      <div><div class="stat-val"><span>17</span>pp</div><div class="stat-lbl">QA improvement</div></div>
+      <div><div class="stat-val"><span>70</span></div><div class="stat-lbl">AI scenarios</div></div>
+      <div><div class="stat-val"><span>4</span></div><div class="stat-lbl">Regions</div></div>
+      <div><div class="stat-val"><span>20</span>%</div><div class="stat-lbl">Waste found</div></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-arrow">&#8595;</div></div>
+  <div class="page-num">01 / 06</div>
+</section>
+
+<!-- ======================== -->
+<!-- PAGE 2: WHAT I OWN -->
+<!-- ======================== -->
+<section class="page" id="p1">
+  <div class="page-inner">
+    <div class="sec-label">What I Own</div>
+    <span class="tag tag-core">Core Role</span>
+    <div class="proj-title">EU Learning Delivery & Program Ownership</div>
+    <div class="proj-desc">Europe didn't have a single owner for training delivery. I became the sole regional lead across 5 programs — building frameworks, localizing content, certifying trainers, and owning every cohort end-to-end.</div>
+    <div class="own-grid">
+      <div class="own-cell"><div class="own-lbl">Programs</div><div class="own-val">New Hire, Retail, Restaurant, Concierge, Upskilling</div></div>
+      <div class="own-cell"><div class="own-lbl">Localization</div><div class="own-val">ILTs, breakouts, bilingual training for EU</div></div>
+      <div class="own-cell"><div class="own-lbl">Trainer Dev</div><div class="own-val">Trained & certified partner trainers (T2/T3)</div></div>
+      <div class="own-cell"><div class="own-lbl">Documentation</div><div class="own-val">Created frameworks that didn't exist</div></div>
+      <div class="own-cell"><div class="own-lbl">Certifications</div><div class="own-val">Facilitation + Coaching certified</div></div>
+      <div class="own-cell"><div class="own-lbl">Post-Training</div><div class="own-val">Nesting design, BPO coaching, tooling readiness</div></div>
+    </div>
+    <div class="own-stats">
+      <span><strong>4+</strong> programs</span>
+      <span><strong>63+</strong> tasks/cohort</span>
+      <span><strong>12+</strong> per class</span>
+      <span><strong>2</strong> trainers certified</span>
+      <span><strong>Sole</strong> EU lead</span>
+    </div>
+  </div>
+  <div class="page-num">02 / 06</div>
+</section>
+
+<!-- ======================== -->
+<!-- PAGE 3: AI SIMULATOR -->
+<!-- ======================== -->
+<section class="page" id="p2">
+  <div class="page-inner">
+    <div class="sec-label">What I Built</div>
+    <span class="tag tag-ai">AI & Innovation</span>
+    <div class="proj-title">AI Training Simulator</div>
+    <div class="proj-desc">New agents know the theory but freeze under live pressure. This simulator lets them practice realistic calls with AI — voice, scoring, and feedback — before their first real customer.</div>
+    <div class="proj-nums">
+      <div><div class="pn-val">70</div><div class="pn-lbl">Scenarios</div></div>
+      <div><div class="pn-val">7</div><div class="pn-lbl">Regions</div></div>
+      <div><div class="pn-val">13/16</div><div class="pn-lbl">Learners loved it</div></div>
+    </div>
+    <div class="vframe">
+      <div class="vbar"><div class="d"></div><div class="d"></div><div class="d"></div><span class="vurl">How it works</span></div>
+      <div class="flow">
+        <div class="fs"><div class="fs-icon">&#9881;</div><div class="fs-label">Scenario Engine</div><div class="fs-sub">70 scenarios, 7 regions<br>AI-generated persona</div></div>
+        <div class="fa">&#8594;</div>
+        <div class="fs"><div class="fs-icon">&#127897;</div><div class="fs-label">Live Voice Call</div><div class="fs-sub">AI plays the customer<br>Agent responds live</div></div>
+        <div class="fa">&#8594;</div>
+        <div class="fs"><div class="fs-icon">&#128200;</div><div class="fs-label">AI Scoring</div><div class="fs-sub">Call structure, empathy<br>Doc accuracy</div></div>
+        <div class="fa">&#8594;</div>
+        <div class="fs"><div class="fs-icon">&#127919;</div><div class="fs-label">Coaching</div><div class="fs-sub">Gap diagnosis feeds<br>personalized follow-up</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">03 / 06</div>
+</section>
+
+<!-- ======================== -->
+<!-- PAGE 4: TRAINING PLATFORM -->
+<!-- ======================== -->
+<section class="page" id="p3">
+  <div class="page-inner">
+    <div class="sec-label">What I Built</div>
+    <span class="tag tag-code">Built with Code</span>
+    <div class="proj-title">Interactive Training Platform</div>
+    <div class="proj-desc">Trainers needed one place to run a 5-day program instead of scattered docs. I coded a full interactive site from scratch — self-taught.</div>
+    <div class="proj-nums">
+      <div><div class="pn-val">20+</div><div class="pn-lbl">Pages</div></div>
+      <div><div class="pn-val">5</div><div class="pn-lbl">Training Days</div></div>
+    </div>
+    <div class="vframe">
+      <div class="vbar"><div class="d"></div><div class="d"></div><div class="d"></div><span class="vurl">training-platform / sitemap</span></div>
+      <div class="sitemap">
+        <div class="sm"><div class="sm-icon">&#128196;</div><div class="sm-name">Day 1-5</div><div class="sm-type">Agendas</div></div>
+        <div class="sm"><div class="sm-icon">&#127908;</div><div class="sm-name">Mock Calls</div><div class="sm-type">Practice</div></div>
+        <div class="sm"><div class="sm-icon">&#127911;</div><div class="sm-name">Call Listening</div><div class="sm-type">Analysis</div></div>
+        <div class="sm"><div class="sm-icon">&#9888;&#65039;</div><div class="sm-name">Escalations</div><div class="sm-type">Decision</div></div>
+        <div class="sm"><div class="sm-icon">&#128295;</div><div class="sm-name">Hardware</div><div class="sm-type">Troubleshoot</div></div>
+        <div class="sm"><div class="sm-icon">&#127758;</div><div class="sm-name">Geo Guide</div><div class="sm-type">Reference</div></div>
+        <div class="sm"><div class="sm-icon">&#128101;</div><div class="sm-name">Breakouts</div><div class="sm-type">Collab</div></div>
+        <div class="sm"><div class="sm-icon">&#128218;</div><div class="sm-name">Scenarios</div><div class="sm-type">Library</div></div>
+        <div class="sm"><div class="sm-icon">&#128736;</div><div class="sm-name">Facilitator Hub</div><div class="sm-type">Admin</div></div>
+        <div class="sm"><div class="sm-icon">&#128214;</div><div class="sm-name">Resources</div><div class="sm-type">Learner</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">04 / 06</div>
+</section>
+
+<!-- ======================== -->
+<!-- PAGE 5: AUTOMATION -->
+<!-- ======================== -->
+<section class="page" id="p4">
+  <div class="page-inner">
+    <div class="sec-label">What I Automated</div>
+    <div class="cgrid" style="grid-template-columns: repeat(3, 1fr);">
+      <div class="cc">
+        <span class="tag tag-auto">Automation</span>
+        <div class="cc-title">Coaching Doc Automation</div>
+        <div class="cc-desc">Auto-generates learner docs from coaching notes and training data. Built to eliminate hours of manual work per cohort.</div>
+      </div>
+      <div class="cc">
+        <span class="tag tag-auto">Automation</span>
+        <div class="cc-title">Completion Report Collector</div>
+        <div class="cc-desc">Trainers were manually exporting, cleaning, and copying data every week. Now it's one click — report generated and delivered instantly.</div>
+        <div class="cc-stats"><span><strong>5+</strong> steps eliminated</span></div>
+      </div>
+      <div class="cc">
+        <span class="tag tag-auto">Automation</span>
+        <div class="cc-title">Reporting Automation</div>
+        <div class="cc-desc">Coaches were spending hours on reports instead of coaching. AI systems now auto-generate documentation and surface insights.</div>
+      </div>
+    </div>
+    <div style="margin-top: 40px;">
+      <div class="vframe">
+        <div class="vbar"><div class="d"></div><div class="d"></div><div class="d"></div><span class="vurl">automation / pattern</span></div>
+        <div class="flow">
+          <div class="fs"><div class="fs-icon">&#128221;</div><div class="fs-label">Manual Input</div><div class="fs-sub">Coaching notes, LMS data<br>CSV exports, scattered docs</div></div>
+          <div class="fa">&#8594;</div>
+          <div class="fs"><div class="fs-icon">&#9889;</div><div class="fs-label">Automated Pipeline</div><div class="fs-sub">Webhooks, scripts, AI<br>process and format</div></div>
+          <div class="fa">&#8594;</div>
+          <div class="fs"><div class="fs-icon">&#128203;</div><div class="fs-label">Instant Output</div><div class="fs-sub">Reports, docs, insights<br>delivered where you work</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">05 / 06</div>
+</section>
+
+<!-- ======================== -->
+<!-- PAGE 6: IMPACT & MORE -->
+<!-- ======================== -->
+<section class="page" id="p5">
+  <div class="page-inner">
+    <div class="sec-label">Impact & More</div>
+    <div class="cgrid">
+      <div class="cc">
+        <span class="tag tag-coaching">Performance Coaching</span>
+        <div class="cc-title">Data-Informed Coaching</div>
+        <div class="cc-desc">Generic coaching doesn't move the needle. I use quality data to diagnose each person's gap — knowledge, skill, or confidence — then match the right intervention.</div>
+        <div class="cc-stats"><span><strong>~17pp</strong> QA improvement</span><span><strong>Low to mid</strong> uplift</span></div>
+      </div>
+      <div class="cc">
+        <span class="tag tag-ops">Process Transformation</span>
+        <div class="cc-title">Global CS Transformation</div>
+        <div class="cc-desc">Frontline workflows had never been mapped. I led the EU side of a 4-region Lean Six Sigma project to find where time was being wasted.</div>
+        <div class="cc-stats"><span><strong>4</strong> regions</span><span><strong>70+</strong> shadows</span><span><strong>20%</strong> waste</span></div>
+      </div>
+      <div class="cc">
+        <span class="tag tag-code">International Expansion</span>
+        <div class="cc-title">Concierge Program Launch</div>
+        <div class="cc-desc">New specialized program needed to launch across Europe with no curriculum. Sole regional lead — built guides, delivered first cohorts.</div>
+        <div class="cc-stats"><span><strong>Sole</strong> EU DRI</span><span><strong>12</strong> trained</span></div>
+      </div>
+      <div class="cc">
+        <span class="tag tag-lead">Leadership</span>
+        <div class="cc-title">Community & Public Speaking</div>
+        <div class="cc-desc">Chaired a regional employee resource group. Organized career fairs, cultural events, spoke on a panel about AI and the future of work.</div>
+        <div class="cc-stats"><span><strong>Chapter</strong> Chair</span><span><strong>Panel</strong> AI & Careers</span><span><strong>4+</strong> events</span></div>
+      </div>
+    </div>
+  </div>
+  <div class="page-num">06 / 06</div>
+</section>
+
+<!-- FOOTER -->
+<div style="padding: 24px; text-align: center; border-top: 1px solid rgba(255,255,255,.06);">
+  <p class="footer-text">Doline Taquet -- Learning & Performance Specialist</p>
+</div>
+
+<script>
+const pages = document.querySelectorAll('.page');
+const dots = document.querySelectorAll('.nav-dot');
+const label = document.getElementById('navLabel');
+const labels = ['Home', 'Delivery', 'AI Simulator', 'Training Platform', 'Automation', 'Impact'];
+
+function goTo(i) {
+  pages[i].scrollIntoView({ behavior: 'smooth' });
+}
+
+function updateNav() {
+  let current = 0;
+  pages.forEach((p, i) => {
+    const rect = p.getBoundingClientRect();
+    if (rect.top <= window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+      current = i;
+    }
+  });
+  dots.forEach((d, i) => d.classList.toggle('active', i === current));
+  label.textContent = labels[current] || '';
+}
+
+window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
+</script>
+</body>
+</html>
