@@ -42,7 +42,7 @@ body {
   display: flex; align-items: center; justify-content: space-between;
   padding: 0 32px; height: 52px;
 }
-.nav-name { font-weight: 700; font-size: .9rem; color: #fff; }
+.nav-name { font-weight: 700; font-size: .9rem; color: #fff; letter-spacing: .01em; }
 .nav-dots { display: flex; gap: 6px; align-items: center; }
 .nav-dot {
   width: 8px; height: 8px; border-radius: 50%;
@@ -76,6 +76,10 @@ body {
 @keyframes pulse { 0%,100% { opacity: .4; } 50% { opacity: 1; } }
 
 /* ===== HERO ===== */
+.hero-intro { display: flex; align-items: center; gap: 18px; margin-bottom: 28px; }
+.hero-avatar { width: 56px; height: 56px; border-radius: 50%; background: #006AFF; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+.hero-name { font-size: 1rem; font-weight: 600; color: #fff; }
+.hero-role { font-size: .8rem; color: #71717a; margin-top: 2px; }
 .hero-title {
   font-size: clamp(2.4rem, 5vw, 3.8rem);
   font-weight: 800; line-height: 1.08;
@@ -150,6 +154,13 @@ body {
 /* ===== FOOTER ===== */
 .footer-page { min-height: auto; padding: 40px; }
 .footer-text { font-size: .75rem; color: #3f3f46; text-align: center; }
+.footer-links { display: flex; justify-content: center; gap: 24px; margin-bottom: 12px; flex-wrap: wrap; }
+.footer-link { font-size: .8rem; color: #71717a; text-decoration: none; transition: color .2s; }
+.footer-link:hover { color: #fff; }
+.footer-cta { text-align: center; margin-bottom: 32px; }
+.footer-cta p { font-size: 1.1rem; font-weight: 600; color: #fff; margin-bottom: 16px; }
+.btn-contact { display: inline-block; background: #006AFF; color: #fff; font-size: .85rem; font-weight: 600; padding: 12px 28px; border-radius: 8px; text-decoration: none; transition: background .2s; }
+.btn-contact:hover { background: #0057d4; }
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
@@ -168,7 +179,7 @@ body {
 
 <!-- NAV -->
 <nav class="nav"><div class="nav-inner">
-  <span class="nav-name">DT</span>
+  <span class="nav-name">Doline Taquet</span>
   <div class="nav-dots">
     <button class="nav-dot active" onclick="goTo(0)" title="Home"></button>
     <button class="nav-dot" onclick="goTo(1)" title="Delivery"></button>
@@ -185,8 +196,15 @@ body {
 <!-- ======================== -->
 <section class="page" id="p0">
   <div class="page-inner">
+    <div class="hero-intro">
+      <div class="hero-avatar">DT</div>
+      <div>
+        <div class="hero-name">Doline Taquet</div>
+        <div class="hero-role">Learning, Development & Enablement Specialist · Dublin, Ireland</div>
+      </div>
+    </div>
     <div class="hero-title">Learning systems that actually change performance.</div>
-    <p class="hero-sub">I own training delivery across Europe, build AI-powered tools, and coach with measurable results.</p>
+    <p class="hero-sub">I'm an L&D specialist with 5 years at Block (Square), building AI-powered training tools, owning programme delivery across Europe, and coaching with measurable results.</p>
     <div class="stats-row">
       <div><div class="stat-val"><span>5</span>+</div><div class="stat-lbl">Programs owned</div></div>
       <div><div class="stat-val"><span>17</span>pp</div><div class="stat-lbl">QA improvement</div></div>
@@ -366,8 +384,17 @@ body {
 </section>
 
 <!-- FOOTER -->
-<div style="padding: 24px; text-align: center; border-top: 1px solid rgba(255,255,255,.06);">
-  <p class="footer-text">Doline Taquet -- Learning & Performance Specialist</p>
+<div style="padding: 40px 24px; border-top: 1px solid rgba(255,255,255,.06);">
+  <div class="footer-cta">
+    <p>Interested in working together?</p>
+    <a href="https://www.linkedin.com/in/dolinetaquet" class="btn-contact" target="_blank">Connect on LinkedIn →</a>
+  </div>
+  <div class="footer-links">
+    <a href="https://dolinetaqpro.github.io/doline-resume/cv_interactive.html" class="footer-link" target="_blank">Interactive CV</a>
+    <a href="https://dolinetaqpro.github.io/doline-resume/interview_trainer.html" class="footer-link" target="_blank">Interview Trainer</a>
+    <a href="https://www.linkedin.com/in/dolinetaquet" class="footer-link" target="_blank">LinkedIn</a>
+  </div>
+  <p class="footer-text">Doline Taquet · Learning & Development Specialist · Dublin, Ireland</p>
 </div>
 
 <script>
