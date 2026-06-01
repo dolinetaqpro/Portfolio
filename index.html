@@ -215,6 +215,7 @@ body {
     <button class="nav-dot" onclick="goTo(3)" title="Training Platform"></button>
     <button class="nav-dot" onclick="goTo(4)" title="Automation"></button>
     <button class="nav-dot" onclick="goTo(5)" title="Impact"></button>
+    <button class="nav-dot" onclick="goTo(6)" title="Contact"></button>
   </div>
   <span class="nav-label" id="navLabel">Home</span>
 </div></nav>
@@ -447,27 +448,24 @@ body {
 </section>
 
 <!-- FOOTER -->
-<div style="padding: 40px 24px; border-top: 1px solid rgba(255,255,255,.06);">
-  <div class="footer-cta">
-    <p>Interested in working together?</p>
-    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
-      <a href="https://www.linkedin.com/in/doline-taquet-234781118/" class="btn-contact" target="_blank">Connect on LinkedIn →</a>
-      <a href="mailto:doline.taq.pro@fmail.com" class="btn-contact" style="background:rgba(255,255,255,.08);color:#e4e4e7">Email me →</a>
+<section class="page" id="p6" style="min-height:60vh; scroll-snap-align:start;">
+  <div class="page-inner" style="text-align:center;">
+    <div class="footer-cta">
+      <p>Let's connect</p>
+      <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:16px">
+        <a href="https://www.linkedin.com/in/doline-taquet-234781118/" class="btn-contact" target="_blank">LinkedIn →</a>
+        <a href="mailto:doline.taq.pro@fmail.com" class="btn-contact" style="background:rgba(255,255,255,.08);color:#e4e4e7;">doline.taq.pro@fmail.com</a>
+      </div>
     </div>
+    <p class="footer-text" style="margin-top:32px">Doline Taquet · Learning & Development Specialist · Dublin, Ireland</p>
   </div>
-  <div class="footer-links">
-    <a href="https://dolinetaqpro.github.io/doline-resume/cv_interactive.html" class="footer-link" target="_blank">Interactive CV</a>
-    <a href="https://dolinetaqpro.github.io/doline-resume/interview_trainer.html" class="footer-link" target="_blank">Interview Trainer</a>
-    <a href="https://www.linkedin.com/in/doline-taquet-234781118/" class="footer-link" target="_blank">LinkedIn</a>
-  </div>
-  <p class="footer-text">Doline Taquet · Learning & Development Specialist · Dublin, Ireland</p>
-</div>
+</section>
 
 <script>
 const pages = document.querySelectorAll('.page');
 const dots = document.querySelectorAll('.nav-dot');
 const label = document.getElementById('navLabel');
-const labels = ['Home', 'Delivery', 'AI Simulator', 'Training Platform', 'Automation', 'Impact'];
+const labels = ['Home', 'Delivery', 'AI Simulator', 'Training Platform', 'Automation', 'Impact', 'Contact'];
 
 function goTo(i) {
   pages[i].scrollIntoView({ behavior: 'smooth' });
