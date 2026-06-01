@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Doline Taquet — Portfolio</title>
+<title>Doline Taquet - Portfolio</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -78,7 +78,10 @@ body {
 /* ===== HERO ===== */
 .hero-welcome { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .12em; color: #006AFF; margin-bottom: 20px; }
 .hero-intro { display: flex; align-items: center; gap: 18px; margin-bottom: 28px; }
-.hero-avatar { width: 56px; height: 56px; border-radius: 50%; background: #006AFF; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; font-weight: 700; color: #fff; flex-shrink: 0; }
+.hero-avatar { width: 72px; height: 72px; border-radius: 50%; background: #006AFF; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 700; color: #fff; flex-shrink: 0; transition: opacity .2s; }
+.hero-avatar:hover { opacity: .85; }
+.hero-btn { font-size: .72rem; font-weight: 600; padding: 6px 14px; border-radius: 20px; background: #006AFF; color: #fff; text-decoration: none; letter-spacing: .02em; }
+.hero-btn-outline { background: transparent; border: 1px solid rgba(255,255,255,.2); color: #a1a1aa; }
 .hero-name { font-size: 1rem; font-weight: 600; color: #fff; }
 .hero-role { font-size: .8rem; color: #71717a; margin-top: 2px; }
 .hero-title {
@@ -204,17 +207,23 @@ body {
   <div class="page-inner">
     <div class="hero-welcome">Welcome to my portfolio</div>
     <div class="hero-intro">
-      <div class="hero-avatar">DT</div>
+      <a href="https://www.linkedin.com/in/doline-taquet-234781118/" target="_blank" style="text-decoration:none">
+        <div class="hero-avatar">DT</div>
+      </a>
       <div>
         <div class="hero-name">Doline Taquet</div>
         <div class="hero-role">Learning, Development & Enablement Specialist · Dublin, Ireland</div>
+        <div style="display:flex;gap:10px;margin-top:8px;flex-wrap:wrap">
+          <a href="https://www.linkedin.com/in/doline-taquet-234781118/" target="_blank" class="hero-btn">LinkedIn</a>
+          <a href="https://dolinetaqpro.github.io/doline-resume/cv_interactive.html" target="_blank" class="hero-btn hero-btn-outline">View CV</a>
+        </div>
       </div>
     </div>
-    <div class="hero-title">I make people better at their jobs — fast.</div>
+    <div class="hero-title">I make people better at their jobs. Fast.</div>
     <div class="hero-three">
       <div class="h3-item">
         <div class="h3-label">What I do</div>
-        <div class="h3-text">I design onboarding programmes, build AI training tools, and coach support teams — from scratch, end to end.</div>
+        <div class="h3-text">I design onboarding programmes, build AI training tools, and coach support teams. From scratch, end to end.</div>
       </div>
       <div class="h3-item">
         <div class="h3-label">Who I do it for</div>
@@ -244,7 +253,7 @@ body {
       <div>
         <div class="stat-val"><span>4</span></div>
         <div class="stat-lbl">Regions</div>
-        <div class="stat-ctx">EU, NA, Australia and beyond — programmes localised and delivered globally</div>
+        <div class="stat-ctx">EU, NA, Australia and beyond. Programmes localised and delivered globally</div>
       </div>
       <div>
         <div class="stat-val"><span>20</span>%</div>
@@ -265,7 +274,7 @@ body {
     <div class="sec-label">What I Own</div>
     <span class="tag tag-core">Core Role</span>
     <div class="proj-title">EU Learning Delivery & Program Ownership</div>
-    <div class="proj-desc">Europe didn't have a single owner for training delivery. I became the sole regional lead across 5 programs — building frameworks, localizing content, certifying trainers, and owning every cohort end-to-end.</div>
+    <div class="proj-desc">Europe didn't have a single owner for training delivery. I became the sole regional lead across 5 programs: building frameworks, localizing content, certifying trainers, and owning every cohort end-to-end.</div>
     <div class="own-grid">
       <div class="own-cell"><div class="own-lbl">Programs</div><div class="own-val">New Hire, Retail, Restaurant, Concierge, Upskilling</div></div>
       <div class="own-cell"><div class="own-lbl">Localization</div><div class="own-val">ILTs, breakouts, bilingual training for EU</div></div>
@@ -293,7 +302,7 @@ body {
     <div class="sec-label">What I Built</div>
     <span class="tag tag-ai">AI & Innovation</span>
     <div class="proj-title">AI Training Simulator</div>
-    <div class="proj-desc">New agents know the theory but freeze under live pressure. This simulator lets them practice realistic calls with AI — voice, scoring, and feedback — before their first real customer.</div>
+    <div class="proj-desc">New agents know the theory but freeze under live pressure. This simulator lets them practice realistic calls with AI, with voice, scoring, and feedback, before their first real customer.</div>
     <div class="proj-nums">
       <div><div class="pn-val">70</div><div class="pn-lbl">Scenarios</div></div>
       <div><div class="pn-val">7</div><div class="pn-lbl">Regions</div></div>
@@ -323,7 +332,7 @@ body {
     <div class="sec-label">What I Built</div>
     <span class="tag tag-code">Built with Code</span>
     <div class="proj-title">Interactive Training Platform</div>
-    <div class="proj-desc">Trainers needed one place to run a 5-day program instead of scattered docs. I coded a full interactive site from scratch — self-taught.</div>
+    <div class="proj-desc">Trainers needed one place to run a 5-day program instead of scattered docs. I coded a full interactive site from scratch. Self-taught.</div>
     <div class="proj-nums">
       <div><div class="pn-val">20+</div><div class="pn-lbl">Pages</div></div>
       <div><div class="pn-val">5</div><div class="pn-lbl">Training Days</div></div>
@@ -362,7 +371,7 @@ body {
       <div class="cc">
         <span class="tag tag-auto">Automation</span>
         <div class="cc-title">Completion Report Collector</div>
-        <div class="cc-desc">Trainers were manually exporting, cleaning, and copying data every week. Now it's one click — report generated and delivered instantly.</div>
+        <div class="cc-desc">Trainers were manually exporting, cleaning, and copying data every week. Now it's one click and the report is generated and delivered instantly.</div>
         <div class="cc-stats"><span><strong>5+</strong> steps eliminated</span></div>
       </div>
       <div class="cc">
@@ -397,7 +406,7 @@ body {
       <div class="cc">
         <span class="tag tag-coaching">Performance Coaching</span>
         <div class="cc-title">Data-Informed Coaching</div>
-        <div class="cc-desc">Generic coaching doesn't move the needle. I use quality data to diagnose each person's gap — knowledge, skill, or confidence — then match the right intervention.</div>
+        <div class="cc-desc">Generic coaching doesn't move the needle. I use quality data to diagnose each person's gap (knowledge, skill, or confidence) and match the right intervention.</div>
         <div class="cc-stats"><span><strong>~17pp</strong> QA improvement</span><span><strong>Low to mid</strong> uplift</span></div>
       </div>
       <div class="cc">
@@ -409,7 +418,7 @@ body {
       <div class="cc">
         <span class="tag tag-code">International Expansion</span>
         <div class="cc-title">Concierge Program Launch</div>
-        <div class="cc-desc">New specialized program needed to launch across Europe with no curriculum. Sole regional lead — built guides, delivered first cohorts.</div>
+        <div class="cc-desc">New specialized program needed to launch across Europe with no curriculum. I was the sole regional lead: built the guides and delivered the first cohorts.</div>
         <div class="cc-stats"><span><strong>Sole</strong> EU DRI</span><span><strong>12</strong> trained</span></div>
       </div>
       <div class="cc">
